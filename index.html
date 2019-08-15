@@ -130,6 +130,28 @@
             </section>
 
             <section>
+                <h2>Coding</h2>
+                <h3>Functional programming</h3>
+                <pre><code data-trim data-noescape>
+                    (def lazy-fib
+                      (concat
+                       [0 1]
+                       <mark>((fn rfib [a b]</mark>
+                            (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
+                        </code>
+                </pre>
+                <h3>Python</h3>
+                <pre><code data-trim data-noescape>
+                        def rec(x,y):
+                            print x+y
+                            return x+1
+                    </code>
+                </pre>
+
+            </section>
+
+
+            <section>
                 <h2>Visão geral da Internet das Coisas (IoT)</h2>
                 <div style="display : flex;">
                     <div style="flex: 45%">
@@ -534,15 +556,15 @@
             </section>
 
             <section>
-                <h2>Questionamentos?</h2>
-                <p>Espaço para dúvidas e comentários.</p>
+                <h2>Questions?</h2>
+                <p>Doubts and comments.</p>
 
                 <div><img src="img/2018_IotDigitu/detective-1424831_640.png" width="40%" style=' background: none; text-shadow: none; box-shadow: none; border: none;'><br>
 
                 </div>
-                <p> Muito obrigado por sua atenção!</p>
+                <p> Thank you for your attention!</p>
 
-                <p> Apresentação disponível em: <a href="https://valeriomedeiros.github.io/Apresentacoes/">valeriomedeiros.github.io/Apresentacoes/</a></p>
+                <p> Presentation avaliable at: <a href="https://valeriomedeiros.github.io/2019_TAP/">valeriomedeiros.github.io/2019_TAP</a></p>
             </section>
 
             
