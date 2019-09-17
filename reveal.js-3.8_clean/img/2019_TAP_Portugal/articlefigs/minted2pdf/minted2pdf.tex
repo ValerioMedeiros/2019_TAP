@@ -1,0 +1,36 @@
+\documentclass[varwidth=6cm, border={0.01cm 0.01cm 0.01cm 0.01cm}]{standalone}
+\usepackage{minted}
+\setminted[ocaml]{escapeinside=||,mathescape=true,frame=single,firstnumber=1,linenos=false,breaklines,fontsize=\footnotesize,baselinestretch=0.8}
+\standaloneenv{minted}
+\begin{document}
+
+%\begin{minted}{python}
+%cool = python.code()
+%\end{minted}
+
+\begin{minted}{ocaml}
+    IMPLEMENTATION RussianMult_i
+    REFINES RussianMult
+    CONCRETE_VARIABLES xx,yy,total
+    INVARIANT xx |$\in$| |$\mathbb{N}$| |$\wedge$| yy |$\in$| |$\mathbb{N}$| |$\wedge$| 
+        total |$\in$| |$\mathbb{N}$|
+    INITIALISATION 
+        xx,yy,total := 0,0,0
+    OPERATIONS
+      RussMult(aa,bb) = 
+        xx:=aa; yy:=bb; total:=0;
+        WHILE xx > 0 DO
+          IF xx mod 2 = 1 THEN 
+            total := total + yy END;
+          xx := xx / 2; yy := yy * 2
+        INVARIANT xx |$\in$| |$\mathbb{N}$| |$\wedge$|
+            total+xx*yy = aa * bb
+        VARIANT xx
+        END
+      END
+    END
+\end{minted}
+
+% Many more minted blocks go here
+
+\end{document}
