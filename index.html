@@ -123,7 +123,7 @@
                     <ul>
                             <li>It is an <u>open source</u> tool developed to support the <u>validation of code generated</u> from B specifications up to executable code. </li><br>
                             <ul>
-                                <li>Tests the translated code and assures dependability of the translation  according to the coverage criterion. </li><br>
+                                <li>Tests the translated code and assures dependability of the translation  according to the coverage criteria. </li><br>
                                   <ul>
                                       <li> <i>Statement Coverage  <b>(ST)</b>; Branch Coverage <b>(BC)</b>; Path Coverage <b>(PC)</b>; Clause Coverage <b>(CC)</b>;  Combinatorial Coverage <b>(CoC)</b>. </i> [AMMANN, 2003]
                                            
@@ -138,47 +138,70 @@
             
             <section>
                     <h2>Introduction  - B Method (2/3)</h2>
-                    <br>Sorell M. : 
+                    
                     
                         <ul>
                             <li>The B Method is a consolidated formal method that <u>has been used for several years in critical systems</u>. </li>
                             <li>It is based on the abstract machine notation <u>(AMN)</u> and on the generalized substitution theory, which was grounded over Dijkstra’s notes [Dijkstra et al. 1976]. </li>
                             <li>The B Method supports <u>modular modeling</u>; each module specifies a software component in a different abstraction level. </li>
-                            <img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/bmethod.png" style='height: 30vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
+                            <img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/bmethod.png" style='height: 40vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
                             <li>B Method allows to obtain a proven implementation model.</li>
                             <ul>
-                                <li>There is still a weak step in the development process: the production of the binary code from the B implementation.</li>
+                                <li>There is still a weak step in the development process.</li>
                             </ul>
                         </ul>
             </section>
             <section>
                 <h2>Motivation (1/2) (General)</h2>
-                
-                <img class="imgsemborda" src="./img/2019_TAP_Portugal/lupa.png" style='height: 30vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
-                <ul>
-                    <li>Errors in compilers occur and may silently introduce bugs from correct source code [Leroy 2009].</li>
-                    <li>Even if the source code meets the functional requirements, which is demonstrably the case with the B method, the object code may not meet these requirements. </li>
-                    <li>Indeed, eleven C compilers are identified with more than 325 compilation errors [Yang et al. 2011]. </li>
-                    <li>Compilers and translators used in small communities have higher inherent technological risks than tools used in large scale [Stuermer et al. 2007]. </li>
-                    <ul> <li>B method has a relatively small community.</li>
-                    </ul>
-                </ul>
+                <br>
+                <div style="display : flex;">
+                    
+                    <div style="flex: 55%">
+                        <ul>
+                            <li>Errors in compilers occur and may silently introduce bugs from correct source code [Leroy 2009].</li>
+                            <li>Even if the source code meets the functional requirements, which is demonstrably the case with the B method, the object code may not meet these requirements. </li>
+                            <li>Indeed, eleven C compilers are identified with more than 325 compilation errors [Yang et al. 2011]. </li>
+                            <li>Compilers and translators used in small communities have higher inherent technological risks than tools used in large scale [Stuermer et al. 2007]. </li>
+                            <ul> <li>B method has a relatively small community.</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div style="flex: 45%">
+                        <br>
+                        <img class="imgsemborda" src="./img/2019_TAP_Portugal/lupa.png" style='height: 30vw; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
+                    </div>
+                </div>
+
+
+
             </section>
+
+
             <section>
                     <h2>Motivation (2/2) (B Method)</h2>
+                    <br>
+                    <div style="display : flex;">
+                        <div style="flex: 55%">
+                            <ul>
+                                    
+                                <li>In the B community, these code generators demand additional safety criteria, mainly because they are used in critical applications. </li>
+                                <li>Testing techniques can be used as an instrument for an in-depth validation of the system.  </li>
+                                <ul>
+                                    <li>    Also, some certification standards require the use of software testing techniques. </li>
+                                </ul>
+                                <li>There are limitations to formal methods, and software testing can complement a formal verification providing tools to identify failures, exploit possible defects introduced during development, or during the maintenance of the code [Matos 2016].  </li>
+                                <li>This context motived the development of BTestBox.</li>
+                                </ul>
+                            </ul>
+                        </div>
+                        <div style="flex: 45%">
+                            <br>
+                            <img class="imgsemborda" src="./img/2019_TAP_Portugal/lupa.png" style='height: 30vw; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
+                        </div>
+                    </div>
                     
-                    <img class="imgsemborda" src="./img/2019_TAP_Portugal/lupa.png" style='height: 30vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
-                    <ul>
-                            
-                        <li>In the B community, these code generators demand additional safety criteria, mainly because they are used in critical applications. </li>
-                        <li>Testing techniques can be used as an instrument for an in-depth validation of the system.  </li>
-                        <ul>
-                            <li>    Also, some certification standards require the use of software testing techniques. </li>
-                        </ul>
-                        <li>There are limitations to formal methods, and software testing can complement a formal verification providing tools to identify failures, exploit possible defects introduced during development, or during the maintenance of the code [Matos 2016].  </li>
-                        <li>This context motived the development of BTestBox.</li>
-                        </ul>
-                    </ul>
+                    
+                    
             </section>
             <section>
                 <h2>Creating the test cases</h2>
@@ -193,10 +216,10 @@
                     <li> Finally, the test components are translated and executed, and
                     the metrics are reported.</li>
                 </ol>
-                <img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/BMethod.png" style='height: 25vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
+                <img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/BMethod.png" style='height: 25vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
             </section>
             <section>
-                    <h2>BTestBox's architecture</h2>
+                    <h2>BTestBox's GUI</h2>
                     <div style="display : flex;">
                         <div style="flex: 45%">
                             <br>
@@ -414,7 +437,7 @@ END
                
             </section>
 
-            <section>
+            <!--<section>
                 <h2>Related work</h2>
                 <ul>
                         <li>In [Marinescu et al. 2015], the authors presented an overview of the current state of the art for model-based testing tools that use requirement-based specification languages. </li>
@@ -431,7 +454,7 @@ END
                                 <ul><li>Our tools generate concrete tests.</li></ul>
                             </ul>
                 </ul>
-            </section>
+            </section>-->
             <section>
                     <h2>Related work</h2>
                     <ul>
@@ -449,8 +472,9 @@ END
                 <h2> Conclusions and final considerations</h2>
                 <br><br><br><br><br>
                 <p>
-                he parallelisation techniques applied reduced the process time and ex-tended the power to generate tests for larger samples. We also configured the toolto run it on a remote computer with more processor cores. This improvementrequired changes that made our tool compatible with the most common oper-ating systems (Windows, OS X and Linux). All recent advances presented hereare encouraging, showing performance numbers that are one order of magnitudebetter than for the previous version of the tool.
-                </p>
+                The parallelisation techniques applied reduced the process time and ex-tended the power to generate tests for larger samples. We also configured the toolto run it on a remote computer with more processor cores. This improvementrequired changes that made our tool compatible with the most common oper-ating systems (Windows, OS X and Linux). All recent advances presented hereare encouraging, showing performance numbers that are one order of magnitudebetter than for the previous version of the tool.
+                    TODO: Enfatizar as contribuições do Paper.
+            </p>
 
 
             </section>
