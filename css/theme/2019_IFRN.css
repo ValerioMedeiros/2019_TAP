@@ -29,7 +29,7 @@ body {
 
 .reveal {
     font-family: "Open Sans", sans-serif;
-    font-size: 36px;
+    font-size: 26px;
     font-weight: 200;
     letter-spacing: -0.02em;
     color: #333333;
@@ -71,7 +71,7 @@ body {
  *********************************************/
 
 .reveal a:not(.image) {
-    color: #3b759e;
+
     text-decoration: none;
     -webkit-transition: color .15s ease;
     -moz-transition: color .15s ease;
