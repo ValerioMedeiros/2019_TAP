@@ -21,7 +21,17 @@
 		<link rel="stylesheet" href="css/theme/2019_IFRN.css" id="theme">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+		<!--<link rel="stylesheet" href="lib/css/monokai.css">-->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Latex Formulas 
+            Repositório da biblioteca:https://www.mathjax.org/#gettingstarted
+            Exemplo aqui:https://jsbin.com/?html,output
+     -->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async
+				src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js">
+		</script>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -74,10 +84,10 @@
 						<div class="row">
 							<div class="column">
 								<ul>
-									<li>Diego Oliveira (U. Sherbrooke - <img class="semborda" src="./img/2019_TAP_Portugal/flag-of-Canada.png" style='margin: 0ch; background: none; text-shadow: none; box-shadow: none; border: none;' height="15em" >)</li>
-									<li><a href="http://godev.ifrn.edu.br/valerio/"> Valério Medeiros Jr.</a> (IFRN - <img class="semborda" src="./img/2019_TAP_Portugal/flag-of-Brazil.png" style='margin: 0ch; background: none; text-shadow: none; box-shadow: none; border: none;' height="15em" >)</li>
-									<li><a href="http://daviddeharbe.github.io/"> David Déharbe</a> (ClearSy - <img class="semborda" src="./img/2019_TAP_Portugal/flag-of-France.png" style='margin: 0ch; background: none; text-shadow: none; box-shadow: none; border: none;' height="15em" >)</li>
-									<li><a href="https://www.dimap.ufrn.br/~mam/"> Martin Musicante</a> (UFRN - <img class="semborda" src="./img/2019_TAP_Portugal/flag-of-Brazil.png"  style='margin: 0ch; background: none; text-shadow: none; box-shadow: none; border: none;' height="15em" >)</li>
+									<li>Diego Oliveira (U. Sherbrooke-<img class="semborda" src="./img/2019_TAP_Portugal/flag-of-Canada.png" style='margin: 0ch; background: none; text-shadow: none; box-shadow: none; border: none;' height="15em" >)</li>
+									<li><a href="http://godev.ifrn.edu.br/valerio/"> Valério Medeiros Jr.</a> (IFRN-<img class="semborda" src="./img/2019_TAP_Portugal/flag-of-Brazil.png" style='margin: 0ch; background: none; text-shadow: none; box-shadow: none; border: none;' height="15em" >)</li>
+									<li><a href="http://daviddeharbe.github.io/"> David Déharbe</a> (ClearSy-<img class="semborda" src="./img/2019_TAP_Portugal/flag-of-France.png" style='margin: 0ch; background: none; text-shadow: none; box-shadow: none; border: none;' height="15em" >)</li>
+									<li><a href="https://www.dimap.ufrn.br/~mam/"> Martin Musicante</a> (UFRN-<img class="semborda" src="./img/2019_TAP_Portugal/flag-of-Brazil.png"  style='margin: 0ch; background: none; text-shadow: none; box-shadow: none; border: none;' height="15em" >)</li>
 								</ul>
 							</div>
 						</div>
@@ -93,9 +103,9 @@
 							<ol>
 								<li> Introduction </li><br>
 								<!-- -->
-								<li> Features of BTestBox</li><br>
+								<li> Methodology of BTestBox</li><br>
 								<li> Example</li><br>
-								<li> Related work</li><br>
+								<li> Main results</li><br>
 								<li> Conclusion and future work</li>
 							</ol>
 						</div>
@@ -103,10 +113,11 @@
 	
 				</section>
 				<section data-transition="fade">
-						<h2>Introduction (1/3)</h2>
 						<aside class="notes">
 								What is the BTestBox?  
 						</aside>
+						<h2>Introduction (1/2)</h2>
+						
 						
 						<img src='./img/2019_TAP_Portugal/logo_full_BTestbox_unamed.png' alt='Image' style='height: 20vmin; background: none; text-shadow: none; box-shadow: none; border: none;' />
 						<ul>
@@ -119,40 +130,48 @@
 											</li>
 									  </ul>  <br>
 									<!-- <li>May help the verification process to find counterexamples</li>-->
-									<li>Can be used as <u>an extension for Atelier B</u> (a popular IDE developed to model, refine, verify, and generate code for B Method). </li>
+									<li>Can be used as <u>an extension for Atelier B</u> (a IDE developed for B Method). </li>
+									<!--a popular IDE developed to model, refine, verify, and generate code for B Method -->
 								</ul>
 								
 						</ul>
 				</section>
 				
 				<section data-transition="fade">
-						<h2>Introduction  - B Method (2/3)</h2>
+						<aside class="notes">
+								<li>B Method allows to obtain a proven implementation model.</li>
+								<ul>
+									<li><u>There is still a weak step</u> in the development process.</li>
+								</ul>
+						</aside>
+						<h2>Introduction  - B Method (2/2)</h2>
 						
 						
 							<ul>
 								<li>The B Method is a consolidated formal method that <u>has been used for several years in critical systems</u>. </li>
 								<li>It is based on the abstract machine notation <u>(AMN)</u> and on the generalized substitution theory, which was grounded over Dijkstra’s notes [Dijkstra et al. 1976]. </li>
 								<li>The B Method supports <u>modular modeling</u>; each module specifies a software component in a different abstraction level. </li>
-								<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/bmethod.png" style='height: 40vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
-								<li>B Method allows to obtain a proven implementation model.</li>
-								<ul>
-									<li>There is still a weak step in the development process.</li>
-								</ul>
+								<center>
+								<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/bmethod.png" style='height: 37vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
+								</center>
 							</ul>
 				</section>
 				<section data-transition="fade">
-					<h2>Motivation (1/2) (General)</h2>
+						<aside class="notes">
+						<ul> <li>B method has a relatively small community.</li>
+						</ul>
+						</aside>
+					<h2>General motivation </h2>
 					<br>
 					<div style="display : flex;">
 						
 						<div style="flex: 55%">
 							<ul>
 								<li>Errors in compilers occur and may silently introduce bugs from correct source code [Leroy 2009].</li>
-								<li>Even if the source code meets the functional requirements, which is demonstrably the case with the B method, the object code may not meet these requirements. </li>
+								<!-- <li>Even if the source code meets the functional requirements, which is demonstrably the case with the B method, the object code may not meet these requirements. </li>-->
 								<li>Indeed, eleven C compilers are identified with more than 325 compilation errors [Yang et al. 2011]. </li>
 								<li>Compilers and translators used in small communities have higher inherent technological risks than tools used in large scale [Stuermer et al. 2007]. </li>
-								<ul> <li>B method has a relatively small community.</li>
-								</ul>
+								
 							</ul>
 						</div>
 						<div style="flex: 45%">
@@ -167,7 +186,15 @@
 	
 	
 				<section data-transition="fade">
-						<h2>Motivation (2/2) (B Method)</h2>
+						<aside class="notes">
+								<ul> <li>For an in-depth verification of the system. Software testing can quickly
+										identify failures and expose defects introduced during the code generation and
+										code maintenance.</li>
+								</ul>
+						</aside>
+						
+
+						<h2>B Method motivation </h2>
 						<br>
 						<div style="display : flex;">
 							<div style="flex: 55%">
@@ -178,8 +205,11 @@
 									<ul>
 										<li>    Also, some certification standards require the use of software testing techniques. </li>
 									</ul>
-									<li>There are limitations to formal methods, and software testing can complement a formal verification providing tools to identify failures, exploit possible defects introduced during development, or during the maintenance of the code [Matos 2016].  </li>
-									<li>This context motived the development of BTestBox.</li>
+
+									<!--<li>Testing techniques may supplement formal methods during the verification
+									and validation process. </li>-->
+									<li>They are used as a lower-cost complement of formal proofs.</li>
+									
 									</ul>
 								</ul>
 							</div>
@@ -193,6 +223,10 @@
 						
 				</section>
 				<section data-transition="fade">
+						<aside class="notes">
+								<ul> <li>Follow the steps .</li>
+								</ul>
+						</aside>
 					<h2>Creating the test cases</h2>
 					<br>
 					<ul>
@@ -205,7 +239,7 @@
 						<li> Finally, the test components are translated and executed, and
 						the metrics are reported.</li>
 					</ul>
-					<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/BMethod.png" style='height: 25vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
+					<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/BMethod.png" style='height: 22vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
 				</section>
 				<section data-transition="fade">
 						<h2>BTestBox's GUI</h2>
@@ -229,45 +263,56 @@
 						</div>
 					</section>
 				<section data-transition="fade">
+						<aside class="notes">
+								<ul><li>Technique, that iteratively
+										doubles one of the factors while halving the other one. The variant and invariant
+										clauses are standard B elements, which are necessary to prove the correctness of the
+										operation, including its termination.</li> 
+									<li>BTestbox generates the following paths.</li>
+								</ul>
+						</aside>
 					<h2>Example - Path Generation</h2>
 					<h4>RussMult</h4>
 					<div style="display : flex;">
 						<div style="flex: 50%">
-							<pre><code data-trim data-noescape>
-	IMPLEMENTATION <mark>RussianMult_i</mark>
+							<!--- <pre><code data-trim data-noescape>
+							<pre class="bash"><code data-trim data-noescape>-->
+							<pre class="javascript"><code data-trim data-noescape>
+	IMPLEMENTATION RussianMult_i
 	REFINES RussianMult
 	CONCRETE_VARIABLES xx,yy,total
-	INVARIANT xx ∈ N ∧ yy ∈ N ∧
-	total ∈ N
+	INVARIANT xx ∈ N ∧ yy ∈ N ∧ total ∈ N
 	INITIALISATION
 		xx,yy,total := 0,0,0
 	OPERATIONS
-		RussMult(aa,bb) =
-			xx:=aa; yy:=bb; total:=0;
-			WHILE xx > 0 DO
-				IF xx mod 2 = 1 THEN
-					total := total + yy 
-				END;
-				xx := xx / 2; 
-				yy := yy * 2
-			INVARIANT xx ∈ N ∧
-				total+xx*yy = aa * bb
-			VARIANT xx
-			END
-		END
+	 RussMult(aa,bb) =
+	  xx:=aa; yy:=bb; total:=0;
+	  WHILE xx > 0 DO
+		IF xx mod 2 = 1 THEN
+			total := total + yy 
+		END;
+		xx := xx / 2; 
+		yy := yy * 2
+	  INVARIANT xx ∈ N ∧
+		total+xx*yy = aa * bb
+	  VARIANT xx
+	  END
+	 END
 	END
+	// The variant and invariant are necessary to prove
+	// the correctness of the operation, including its termination.
 									</code>
 							</pre>
-							The variant and invariant are necessary to prove the correctness of the operation, including its termination.
+							
 						</div>
 						<div style="flex: 50%">
-							<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/lacoGrafo.png" style='height: 40vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
-							<p> BTestbox generates the following paths:<br>
-								<ol>
-									<li> = 1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 10; </li>
-									<li> = 1, 2, 3, 4, 5, 6,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8, 9, 5, 10; </li>
-									<li> = 1, 2, 3, 4, 5,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.</li>
-								</ol></p>
+							<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/lacoGrafo.png" style='height: 37vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
+							<!-- BTestbox generates the following paths:<br>-->
+								<ul>
+									<li>  1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 10; </li>
+									<li>  1, 2, 3, 4, 5, 6,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8, 9, 5, 10; </li>
+									<li>  1, 2, 3, 4, 5,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.</li>
+								</ul>
 						</div>
 					</div>
 					<aside class="notes">
@@ -316,69 +361,75 @@
 							In our example, <i>ProB</i> returned that a possible solution is \(aa = 1, bb = 0, xx = 0, yy = 0, total = 0\). 
 							These values may define the input of a test case.
 							<br>
-							<br>
-							In this example, it will lead to the following test cases (for the BC Criterion):
-							<center>
-							<table style ="border=1; border: 1px solid black;  padding: 10px; text-align: left;">
-							<thead><tr>
-								<th></th>
-								<th style="text-align: center;" colspan=2 >Test 1</th>
-								
-								
-								<th style="text-align: center;" colspan=2 >Test 2</th>
-								
-							</tr></thead>
-							<tbody><tr>
-								<td>Variable</td>
-								<td>Input</td>
-								<td>Output</td>
-								<td>Input</td>
-								<td>Output</td>
-							</tr>
-							<tr>
-								<td>aa</td>
-								<td>1</td>
-								<td>1</td>
-								<td>2</td>
-								<td>2</td>
-							</tr>
-							<tr>
-								<td>bb</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-							 <tr>
-								<td>xx</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-							 <tr>
-								<td>yy</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-							 <tr>
-								<td>total</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-							</tr>
-							</tbody>
-						</table>
-						</center>
-	
+							
 	
 					</p>
 				   
 				</section>
-	
+				<section data-transition="fade">
+						<h3>Path Generation</h3>
+								<br>
+								In this example, it will lead to the following test cases (for the BC Criterion):
+								<center>
+								<table style ="border=1; border: 1px solid black;  padding: 10px; text-align: left;">
+								<thead><tr>
+									<th></th>
+									<th style="text-align: center;" colspan=2 >Test 1</th>
+									
+									
+									<th style="text-align: center;" colspan=2 >Test 2</th>
+									
+								</tr></thead>
+								<tbody><tr>
+									<td>Variable</td>
+									<td>Input</td>
+									<td>Output</td>
+									<td>Input</td>
+									<td>Output</td>
+								</tr>
+								<tr>
+									<td>aa</td>
+									<td>1</td>
+									<td>1</td>
+									<td>2</td>
+									<td>2</td>
+								</tr>
+								<tr>
+									<td>bb</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								 <tr>
+									<td>xx</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								 <tr>
+									<td>yy</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								 <tr>
+									<td>total</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								</tbody>
+							</table>
+							</center>
+		
+		
+						</p>
+					   
+					</section>
 	
 				<section data-transition="fade">
 					<h2> Creating test case files</h2>
