@@ -135,29 +135,28 @@
 						<aside class="notes">
 								
 								<ul>
-								<li>It is an <u>open source</u> tool developed to support the <u>validation of code generated</u> from B specifications up to executable code. </li><br>
+								<li>It is an <u>open source</u> tool developed to support the <u>validation of code generated</u> from B specifications up to executable code. </li>
 								
-									<li>Tests the translated code and assures dependability of the translation  according to the coverage criteria. </li><br>
-									  <ul>
-										  <li> <i>Statement Coverage  <b>(ST)</b>; Branch Coverage <b>(BC)</b>; Path Coverage <b>(PC)</b>; Clause Coverage <b>(CC)</b>;  Combinatorial Coverage <b>(CoC)</b>. </i> [AMMANN, 2003]
-											   
-											</li>
-									  </ul>  <br>
-									<!-- <li>May help the verification process to find counterexamples</li>-->
-									<li>Can be used as <u>an extension for Atelier B</u> (a IDE developed for B Method). </li>
-									<!--a popular IDE developed to model, refine, verify, and generate code for B Method -->
+								
+									<li>Helps the verification to find counterexamples.</li>
+									<li>Can be used as <u>an extension for Atelier B</u> (a popular IDE developed to model, refine, verify, and generate code for B Method). </li>
+									<!-- -->
 								</ul>  
+								Extras: Supported criteria:
+								<ul>
+								<li>Statement Coverage  <b>(ST)</b>; Branch Coverage <b>(BC)</b>; Path Coverage <b>(PC)</b>; Clause Coverage <b>(CC)</b>;  Combinatorial Coverage <b>(CoC)</b>.</li>
+								</ul>
 						</aside>
 						<h2>Introduction (1/2)</h2>
 						
 						
 						<img src='./img/2019_TAP_Portugal/logo_full_BTestbox_unamed.png' alt='Image' style='height: 15vmin; background: none; text-shadow: none; box-shadow: none; border: none;' />
 						<ul>
-								<li>It is an <u>open source</u> tool developed to support the <u>validation of code generated</u> from B specifications up to executable code. </li><br>
+								<li>An <u>open source</u> tool developed to support the <u>validation of code generated</u>. </li><br>
 								<ul>
 									<li>Tests the translated code and assures dependability of the translation  according to the coverage criteria. </li><br>
 									  <ul>
-										  <li> <i>Statement Coverage  <b>(ST)</b>; Branch Coverage <b>(BC)</b>; Path Coverage <b>(PC)</b>; Clause Coverage <b>(CC)</b>;  Combinatorial Coverage <b>(CoC)</b>. </i> [AMMANN, 2003]
+										  <li> <i>Statement Coverage  <b>(ST)</b>; Path Coverage <b>(PC)</b>;  Combinatorial Coverage <b>(CoC)</b> and others. </i>
 											   
 											</li>
 									  </ul>  <br>
@@ -180,9 +179,9 @@
 						
 						
 							<ul>
-								<li>The B Method is a consolidated formal method that <u>has been used for several years in critical systems</u>. </li>
-								<li>It is based on the abstract machine notation <u>(AMN)</u> and on the generalized substitution theory, which was grounded over Dijkstra’s notes [Dijkstra et al. 1976]. </li>
-								<li>The B Method supports <u>modular modeling</u>; each module specifies a software component in a different abstraction level. </li>
+								<li>The B Method is a <u>consolidated</u> formal method that has been <u>used for several years in critical systems</u>. </li>
+								<li>It is based on the abstract machine notation <u>(AMN)</u> and on the generalized substitution theory.</li>
+								<ul><li>Supports <u>modular modeling</u>; each module specifies a software component in a different abstraction level. </li></ul>
 								<center>
 								<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/bmethod.png" style='height: 37vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
 								</center>
@@ -190,7 +189,7 @@
 				</section>
 				<section data-transition="fade">
 						<aside class="notes">
-						<ul> <li>B method has a relatively small community.</li>
+						<ul> <li>[NEXT SLIDE] B method has a relatively small community.</li>
 						</ul>
 						</aside>
 					<h2>General motivation </h2>
@@ -200,8 +199,9 @@
 						<div style="flex: 55%">
 							<ul>
 								<li>Errors in compilers occur and may silently introduce bugs from correct source code [Leroy 2009].</li>
+								<br>
 								<!-- <li>Even if the source code meets the functional requirements, which is demonstrably the case with the B method, the object code may not meet these requirements. </li>-->
-								<li>Indeed, eleven C compilers are identified with more than 325 compilation errors [Yang et al. 2011]. </li>
+								<li>Eleven C compilers are identified with more than 325 compilation errors [Yang et al. 2011]. </li><br>
 								<li>Compilers and translators used in small communities have higher inherent technological risks than tools used in large scale [Stuermer et al. 2007]. </li>
 								
 							</ul>
