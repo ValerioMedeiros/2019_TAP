@@ -219,10 +219,20 @@
 	
 				<section data-transition="fade">
 						<aside class="notes">
-								<ul> <li>For an in-depth verification of the system. Software testing can quickly
-										identify failures and expose defects introduced during the code generation and
-										code maintenance.</li>
-								</ul>
+								<font size="-0.5">
+								<ul>
+										
+										<li>In the B community, these code generators demand additional safety criteria, mainly because they are used in critical applications. </li>
+										<li>Testing techniques can be used as an instrument for an in-depth validation of the system.  </li>
+										<ul>
+												<li>They are used as a lower-cost complement of formal proofs.</li>
+												<li>They can quickly identify failures introduced during the code generation.</li>
+												<li>Also, some certification standards require the use of software testing techniques. </li>
+										</ul>
+											<!--<li>Testing techniques may supplement formal methods during the verification and validation process. </li>-->								
+										</ul>
+									</ul>
+								</font>
 						</aside>
 						
 
@@ -232,11 +242,12 @@
 							<div style="flex: 55%">
 								<ul>
 										
-									<li>In the B community, these code generators demand additional safety criteria, mainly because they are used in critical applications. </li>
+									<li>B code generators demand additional safety criteria.</li>
+										 <ul><li>They are used in critical applications. </li></ul>
 									<li>Testing techniques can be used as an instrument for an in-depth validation of the system.  </li>
 									<ul>
-											<li>They are used as a lower-cost complement of formal proofs.</li>
-										<li>    Also, some certification standards require the use of software testing techniques. </li>
+											<li>A lower-cost complement of formal proofs.</li>
+											<li>Some certification standards require the use of software testing techniques. </li>
 									</ul>
 
 									<!--<li>Testing techniques may supplement formal methods during the verification
@@ -254,6 +265,27 @@
 						
 						
 						
+				</section>
+
+				<section data-transition="fade">
+						<h2>BTestBox's GUI</h2>
+						<div style="display : flex;">
+							<div style="flex: 45%">
+								<br>
+								<ul>
+										<li>Can be used as an <u>extension for Atelier B</u> (a popular IDE developed to model, refine, verify, and generate code for B Method).</li>
+										<ul>
+											<li>The test cases are written in B so that the models are
+												translated and executed in any target language.</li>
+											<li>The tool receives a B implementation, the target translator, a compiler, a coverage criterion, the folder project,											and the logic expression solver (ProB)</li>
+	
+										</ul>
+								</ul>
+							</div>
+							<div style="flex: 55%">
+							<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/GUI.png" style='height: 40vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
+							</div>
+						</div>
 				</section>
 				<section data-transition="fade">
 						<aside class="notes">
@@ -274,27 +306,8 @@
 					</ul>
 					<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/BMethod.png" style='height: 22vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
 				</section>
-				<section data-transition="fade">
-						<h2>BTestBox's GUI</h2>
-						<div style="display : flex;">
-							<div style="flex: 45%">
-								<br>
-								<ul>
-										<li>BTestBox can be used as an <u>extension for Atelier B</u> (a popular IDE developed to model, refine, verify, and generate code for B Method).</li>
-										<ul>
-											<li>The test cases are written in B so that the models are
-												translated and executed in any target language.</li>
-											<li>The tool receives a B implementation, the target translator, a compiler, a coverage criterion, the folder project,
-												and the logic expression solver (ProB [12])</li>
-	
-										</ul>
-								</ul>
-							</div>
-							<div style="flex: 55%">
-							<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/GUI.png" style='height: 40vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
-							</div>
-						</div>
-					</section>
+				
+				
 				<section data-transition="fade">
 						<aside class="notes">
 								<ul><li>Technique, that iteratively
@@ -504,7 +517,7 @@
 				<section data-transition="fade">
 					<h2>Experiments with parallelizations</h2>
 					<br>
-					All of the examples shown in Table 2 can be easily executed in a leased cloud computer (one compute-optimised vir-tual machines with 20 dedicated vCPUs for one hour) costing less than one USdollar  with  similar  results.  Our  experiments  have  shown  that  processing  timeis  reduced  approximately  proportionally  when  we  use  a  computer  with  moreprocessing cores.
+					All of the examples shown in Table 2 can be easily executed in a leased cloud computer (one compute-optimised virtual machines with 20 dedicated vCPUs for one hour) costing less than one USdollar  with  similar  results.  Our  experiments  have  shown  that  processing  time is  reduced  approximately  proportionally  when  we  use  a  computer  with  more processing cores.
 				<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/TableNewResults.png" style='height: 30vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'><br>
 		
 				   
