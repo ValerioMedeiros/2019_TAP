@@ -114,7 +114,19 @@
 				</section>
 				<section data-transition="fade">
 						<aside class="notes">
-								What is the BTestBox?  
+								What is the BTestBox?
+								<li>It is an <u>open source</u> tool developed to support the <u>validation of code generated</u> from B specifications up to executable code. </li><br>
+								<ul>
+									<li>Tests the translated code and assures dependability of the translation  according to the coverage criteria. </li><br>
+									  <ul>
+										  <li> <i>Statement Coverage  <b>(ST)</b>; Branch Coverage <b>(BC)</b>; Path Coverage <b>(PC)</b>; Clause Coverage <b>(CC)</b>;  Combinatorial Coverage <b>(CoC)</b>. </i> [AMMANN, 2003]
+											   
+											</li>
+									  </ul>  <br>
+									<!-- <li>May help the verification process to find counterexamples</li>-->
+									<li>Can be used as <u>an extension for Atelier B</u> (a IDE developed for B Method). </li>
+									<!--a popular IDE developed to model, refine, verify, and generate code for B Method -->
+								</ul>  
 						</aside>
 						<h2>Introduction (1/2)</h2>
 						
@@ -766,11 +778,23 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+
+				math: {// Default way of add mathlatex with reveals using the separator \[   \] example at test/examples/math.html
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full',
+					TeX: {
+						Macros: {
+							R: '\\mathbb{R}',
+							set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+						}
+					}
+				},
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: '../../plugin/math/math.js', async: true }
 				]
 			});
 
