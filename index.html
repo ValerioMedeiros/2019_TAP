@@ -146,6 +146,22 @@
 								<ul>
 								<li>Statement Coverage  <b>(ST)</b>; Branch Coverage <b>(BC)</b>; Path Coverage <b>(PC)</b>; Clause Coverage <b>(CC)</b>;  Combinatorial Coverage <b>(CoC)</b>.</li>
 								</ul>
+									100% path coverage.<br>
+									Execute all possible control flow paths through the program.
+									
+									<br><br>
+									Statement Testing:
+									100% statement coverage.
+									Execute all statements in a program at least once under some test.
+									<br><br>
+									Branch Testing:
+									100% branch coverage.
+									Execute enough tests to assure that every branch alternative has been exercised at least once under some test.
+									<br><br>
+									In general Path Testing >= Branch Testing >= Statement Testing, in terms of how much confidence they can provide in the correctness of your system.
+
+
+					
 						</aside>
 						<h2>Introduction (1/2)</h2>
 						
@@ -156,7 +172,7 @@
 								<ul>
 									<li>Tests the translated code and assures dependability of the translation  according to the coverage criteria. </li><br>
 									  <ul>
-										  <li> <i>Statement Coverage  <b>(ST)</b>; Path Coverage <b>(PC)</b>;  Combinatorial Coverage <b>(CoC)</b> and others. </i>
+										  <li> <i>Statement Coverage  <b>(ST)</b>; Branch Coverage <b>(BC)</b>; Path Coverage <b>(PC)</b>; and others. </i>
 											   
 											</li>
 									  </ul>  <br>
@@ -189,7 +205,12 @@
 				</section>
 				<section data-transition="fade">
 						<aside class="notes">
-						<ul> <li>[NEXT SLIDE] B method has a relatively small community.</li>
+						<ul>
+							<li>Errors in compilers occur and may silently introduce bugs from correct source code [Leroy 2009].</li>
+							<li>Eleven C compilers were identified with more than 325 compilation errors [Yang et al. 2011]. </li>
+							<li>Compilers and translators used in small communities have higher inherent technological risks than tools used in large scale [Stuermer et al. 2007]. </li>
+						
+						 <li>[NEXT SLIDE] B method has a relatively small community.</li>
 						</ul>
 						</aside>
 					<h2>General motivation </h2>
@@ -198,11 +219,11 @@
 						
 						<div style="flex: 55%">
 							<ul>
-								<li>Errors in compilers occur and may silently introduce bugs from correct source code [Leroy 2009].</li>
+								<li>Errors in compilers silently <u>introduce bugs</u>  [Leroy 2009].</li>
 								<br>
 								<!-- <li>Even if the source code meets the functional requirements, which is demonstrably the case with the B method, the object code may not meet these requirements. </li>-->
-								<li>Eleven C compilers are identified with more than 325 compilation errors [Yang et al. 2011]. </li><br>
-								<li>Compilers and translators used in small communities have higher inherent technological risks than tools used in large scale [Stuermer et al. 2007]. </li>
+								<li>Eleven C compilers were identified with more than <u>325 errors</u> [Yang et al. 2011]. </li><br>
+								<li>Code generators used in <u>small communities have higher inherent technological risks</u> than tools used in large scale [Stuermer et al. 2007]. </li>
 								
 							</ul>
 						</div>
@@ -220,8 +241,7 @@
 				<section data-transition="fade">
 						<aside class="notes">
 								<font size="-0.5">
-								<ul>
-										
+									<ul>
 										<li>In the B community, these code generators demand additional safety criteria, mainly because they are used in critical applications. </li>
 										<li>Testing techniques can be used as an instrument for an in-depth validation of the system.  </li>
 										<ul>
@@ -236,18 +256,18 @@
 						</aside>
 						
 
-						<h2>B Method motivation </h2>
+						<h2>Motivation in B Method  </h2>
 						<br>
 						<div style="display : flex;">
 							<div style="flex: 55%">
 								<ul>
 										
-									<li>B code generators demand additional safety criteria.</li>
+									<li>B code generators <u>demand additional safety criteria</u>.</li>
 										 <ul><li>They are used in critical applications. </li></ul>
-									<li>Testing techniques can be used as an instrument for an in-depth validation of the system.  </li>
+									<li>Testing techniques can be used as <u>an instrument for an in-depth validation</u> of the system.  </li>
 									<ul>
 											<li>A lower-cost complement of formal proofs.</li>
-											<li>Some certification standards require the use of software testing techniques. </li>
+											<li>Some certifications require the use of software testing techniques. </li>
 									</ul>
 
 									<!--<li>Testing techniques may supplement formal methods during the verification
@@ -269,16 +289,28 @@
 
 				<section data-transition="fade">
 						<section data-transition="fade">
+								<aside class="notes">
+										<font size="-0.5">
+												<ul>
+														<li>Can be used individually on <u>terminal command</u> or as an <u>extension for Atelier B</u> (a popular IDE developed to model, refine, verify, and generate code for B Method).</li>
+														<ul>
+															<li>The test cases are written in B so that the models are
+																translated and executed in any target language.</li>
+															<li>The tool receives a B implementation, the target translator, a compiler, a coverage criterion, the folder project, and the logic expression solver (ProB)</li>
+															#next let's see it working!
+														</ul>
+												</ul>
+										</font>
+								</aside>
 							<h2>BTestBox's GUI</h2>
 							<div style="display : flex;">
 								<div style="flex: 45%">
 									<br>
 									<ul>
-											<li>Can be used as an <u>extension for Atelier B</u> (a popular IDE developed to model, refine, verify, and generate code for B Method).</li>
+											<li>Can be used as an <u>extension for Atelier B</u>.</li>
 											<ul>
-												<li>The test cases are written in B so that the models are
-													translated and executed in any target language.</li>
-												<li>The tool receives a B implementation, the target translator, a compiler, a coverage criterion, the folder project,											and the logic expression solver (ProB)</li>
+												<li>The test cases are written in B.</li>
+												<li>The tool receives a B implementation, the target translator, a compiler, a coverage criterion, the folder project, and the logic expression solver (ProB)</li>
 		
 											</ul>
 									</ul>
@@ -297,7 +329,17 @@
 				</section>
 				<section data-transition="fade">
 						<aside class="notes">
-								<ul> <li>Follow the steps .</li>
+								<ul> 
+									<li> BTestBox generates <u>a control flow graph</u> and uses Hoare logic to generate a <u>predicate characterizing</u> the possible values for the execution paths, according to the
+										chosen criterion.</li>
+										<li> Then, the predicates are solved and the values of the input and
+										output parameters are stored for each valid solution. </li>
+										<ul><li>Our tool prepares B components capable of executing and checking the execution of the test cases after
+										the translation.</li></ul>
+										<li> Finally, the test components are translated and executed, and
+										the metrics are reported.</li>
+									<li>Follow the steps .</li>
+									#next let's see the control flow graph
 								</ul>
 						</aside>
 					<h2>Creating the test cases</h2>
@@ -305,12 +347,11 @@
 					<ul>
 						<li> BTestBox generates <u>a control flow graph</u> and uses Hoare logic to generate a <u>predicate characterizing</u> the possible values for the execution paths, according to the
 						chosen criterion.</li>
-						<li> Then, the predicates are solved and the values of the input and
-						output parameters are stored for each valid solution. </li>
-						<ul><li>Our tool prepares B components capable of executing and checking the execution of the test cases after
-						the translation.</li></ul>
-						<li> Finally, the test components are translated and executed, and
-						the metrics are reported.</li>
+						<li> The predicates are <u>solved</u> and the values of the input and
+						output parameters are <u>stored</u> for each valid solution. </li>
+						
+						<li> The test components are <u>translated and executed, and
+						the metrics are reported</u>.</li>
 					</ul>
 					<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/BMethod.png" style='height: 22vh; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
 				</section>
@@ -322,10 +363,17 @@
 										doubles one of the factors while halving the other one. The variant and invariant
 										clauses are standard B elements, which are necessary to prove the correctness of the
 										operation, including its termination.</li> 
-									<li>BTestbox generates the following paths.</li>
+									<li>BTestbox generates the following all paths.</li>
 								</ul>
+								#Next How is generated the test cases?
+								Extras:
+								For example, using the PC criterion on the model shown in Fig. 1b, it is necessary to test the three
+								paths defined for the example. Other criteria may have different requirements.
+								For instance, if the ST criterion is required, only path 1 needs to be checked.
+								For the BC criterion, a minimum of two paths would be executed. In accordance
+								with the test criterion,
 						</aside>
-					<h2>Example - Path Generation</h2>
+					<h2>Example - Control flow graph</h2>
 					<h4>RussMult</h4>
 					<div style="display : flex;">
 						<div style="flex: 50%">
@@ -362,6 +410,7 @@
 						<div style="flex: 50%">
 							<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/lacoGrafo.png" style='height: 37vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'>
 							<!-- BTestbox generates the following paths:<br>-->
+							
 								<ul>
 									<li>  1, 2, 3, 4, 5, 6, 7, 8, 9, 5, 10; </li>
 									<li>  1, 2, 3, 4, 5, 6,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8, 9, 5, 10; </li>
@@ -380,29 +429,41 @@
 				<section data-transition="fade">
 					<h3>Generating Predicates</h3>
 					<br>
-					We use the notation: \(\{P\} C \{Q\}\), where
-					\(P\) represents the precondition for the execution of the command \(C\), and \(Q\) is the post-condition established after the command. 
-					\(P\) and \(Q\) are states described by first-order logic formula. 
-					The precondition may be computed from the command and post-condition. 
+					Based on Hoare triples (\(\{P\} C \{Q\}\))<br>
+					\(P\) the precondition <br>
+					\(C\) the command <br> 
+					\(Q\) is the post-condition <br> 
+					<!--The precondition may be computed from the command and post-condition. --><br>
 					<br>
-					The predicates for each path generated by <i>BTestBox</i> are used to create test cases. 
-	
+					<ul>
+						<li>The predicates for each path generated by <i>BTestBox</i> are used to create test cases. </li>
+						<li>Each criterion requires one different condition to be satisfied.</li>
+					</ul>
 					
 	
 				<aside class="notes">
-					Our tool relies on Hoare triples to compute how a command changes the state. 
-					We use the notation: \(\{P\} C \{Q\}\), where
-					\(P\) represents the precondition for the execution of the command \(C\), and \(Q\) is the post-condition established after the command. 
-					\(P\) and \(Q\) are states described by first-order logic formula. 
-					The precondition may be computed from the command and post-condition. 
-	
+						<font size="-0.5">
+							Our tool relies on Hoare triples to compute how a command changes the state. 
+							<br>
+							We use the notation: {P} C {Q}, where<br>
+							(P) represents the precondition for the execution of the command <br>
+							(C), and (Q) is the post-condition established after the command. <br>
+							(P) and (Q) are states described by first-order logic formula. <br>
+							The precondition may be computed from the command and post-condition.<br> 
+							Each criterion requires one different condition to be satisfied.<br>
+						</font>
 				</aside>
 	
 	
 				</section>
 				
 				<section data-transition="fade">
-					<h3>Path Generation</h3>
+						<aside class="notes">
+								<font size="-0.5">
+									???
+								</font>
+						</aside>
+					<h3>Test case generation</h3>
 							   
 					<p>
 							\(\exists(xx, yy, total).(xx > 0 \wedge xx\ mod\ 2 = 1 \wedge xx \in \mathbb{N} \wedge total + xx * yy = aa * bb) \) <br>
@@ -421,9 +482,9 @@
 				   
 				</section>
 				<section data-transition="fade">
-						<h3>Path Generation</h3>
+						<h3>Branch coverage criterion</h3>
 								<br>
-								In this example, it will lead to the following test cases (for the BC Criterion):
+								It will lead to the following test cases:
 								<center>
 								<table style ="border=1; border: 1px solid black;  padding: 10px; text-align: left;">
 								<thead><tr>
@@ -479,6 +540,11 @@
 								</tbody>
 							</table>
 							</center>
+							<ul>
+								<li>SC criterion require only one test case; </li>
+								<li>BC criterion require only two test cases; </li>
+								<li>PC criterion require only three test cases. </li>	
+							</ul>
 		
 		
 						</p>
@@ -490,15 +556,34 @@
 					<br>
 							
 							<ul>
-								<ul>
-									<li>Its improvements will provide interesting information and metrics about the code.</li><br>
-								</ul>
+								
+								<li>Its improvements will provide interesting information and metrics about the code.</li><br>
+								
 								<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/arcBTestBox2_new_noBG.png" style='height: 30vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'><br>
 							 
-							<li>Compatibility to any B Translators (The generated tests are represented on B Language)&#10004;</li>
+							<li>Compatibility to <u>any B Translators</u>.</li>
+							<li>Possible to use <u>others solvers</u>.</li>
 							</ul>
 				</section>
 				<section data-transition="fade">
+						<aside class="notes">
+								<font size="-0.5">
+									
+									<ul>
+									<!--%\item The clause group exercises the structures sees, extends, constants, constraints, imports, promotes, sets, variables, and local operations. Those elements are put in test in groups and separately to observe the changes in the predicate that each can perform.-->
+									<li> The <u>Clauses</u> group, with 14 examples, the tests observe the changes that each element can perform in the predicate.</li>
+									
+									<!--%\item Operation calls employ the operation calls in different contexts. -->
+									<li> The <u>Operation Call</u> group, with 26 examples in different contexts exercises operation calls.</li>
+									
+									<!-- %\item Depth blocks are sensitive to the instructions if-else, case, skip, while and assignment. They are grouped and nested to max depth of three. -->
+									<li> The <u>Depth blocks</u> group, with 89 examples, is sensitive to the if-else, case, skip, while, and assignment instructions. They are grouped and nested to the maximum depth of three.</li>
+									
+									<!--  %\item The industrial project is responsible for diverse contributions to \textit{BTestBox}, with B structures non previous tested. Unfortunately, the tests generated for this case are very time consuming due the necessity of sets expansions.-->
+									<li> The <u>Industrial project</u> group, with one big example, is responsible for different contributions to the <i>BTestBox</i>, with non-previously tested B syntactic structures. Unfortunately, the tests generated for this case are very time-consuming due to the necessity of set expansions.</li>
+									</ul>
+								</font>
+						</aside>
 					<h2>Experiments</h2>
 	
 					BTestBox was  tested  for  a  variety  of  different  B  syntactic  features,  with  the goal 
@@ -509,23 +594,33 @@
 					
 					<ul>
 						<!--%\item The clause group exercises the structures sees, extends, constants, constraints, imports, promotes, sets, variables, and local operations. Those elements are put in test in groups and separately to observe the changes in the predicate that each can perform.-->
-						<li> The <u>Clauses</u> group, with 14 examples, the tests observe the changes that each element can perform in the predicate.</li>
+						<li> The <u>Clauses</u> group, with 14 examples.</li>
 						
 						<!--%\item Operation calls employ the operation calls in different contexts. -->
-						<li> The <u>Operation Call</u> group, with 26 examples in different contexts exercises operation calls.</li>
+						<li> The <u>Operation Call</u> group, with 26 examples in different contexts.</li>
 						
 						<!-- %\item Depth blocks are sensitive to the instructions if-else, case, skip, while and assignment. They are grouped and nested to max depth of three. -->
-						<li> The <u>Depth blocks</u> group, with 89 examples, is sensitive to the if-else, case, skip, while, and assignment instructions. They are grouped and nested to the maximum depth of three.</li>
+						<li> The <u>Depth blocks</u> group, with 89 examples.</li>
 						
 						<!--  %\item The industrial project is responsible for diverse contributions to \textit{BTestBox}, with B structures non previous tested. Unfortunately, the tests generated for this case are very time consuming due the necessity of sets expansions.-->
-						<li> The <u>Industrial project</u> group, with one big example, is responsible for different contributions to the <i>BTestBox</i>, with non-previously tested B syntactic structures. Unfortunately, the tests generated for this case are very time-consuming due to the necessity of set expansions.</li>
+						<li> The <u>Industrial project</u> group, with one big example, is responsible for different contributions to the <i>BTestBox</i>.</li>
 					</ul>
 				</section>
 	
 				<section data-transition="fade">
-					<h2>Experiments with parallelizations</h2>
+						<aside class="notes">
+								<font size="-0.5">
+									
+										All of the examples shown in Table 2 can be easily executed in a leased cloud computer (one compute-optimised virtual machines with 20 dedicated vCPUs for one hour) costing less than one USdollar  with  similar  results.  Our  experiments  have  shown  that  processing  time is  reduced  approximately  proportionally  when  we  use  a  computer  with  more processing cores.
+			
+								</font>
+						</aside>
+					<h2>Experiments with parallelization</h2>
 					<br>
-					All of the examples shown in Table 2 can be easily executed in a leased cloud computer (one compute-optimised virtual machines with 20 dedicated vCPUs for one hour) costing less than one USdollar  with  similar  results.  Our  experiments  have  shown  that  processing  time is  reduced  approximately  proportionally  when  we  use  a  computer  with  more processing cores.
+					<ul>
+						<li>All of the examples shown can be easily executed in a leased cloud computer (with 20 dedicated vCPUs for one hour) costing less than one US dollar  with  similar  results.  </li>
+						<li>The time is reduced  approximately  proportionally  when  we  use  a  computer  with  more processing cores.</li>
+					</ul>
 				<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/TableNewResults.png" style='height: 30vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'><br>
 		
 				   
