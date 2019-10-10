@@ -181,7 +181,7 @@
 											</li>
 									  </ul>  <br>
 									<!-- <li>May help the verification process to find counterexamples</li>-->
-									<li>Can be used as <u>an extension for Atelier B</u> (a IDE developed for B Method). </li>
+									<li>Extension <u>developed for B Method</u>. </li>
 									<!--a popular IDE developed to model, refine, verify, and generate code for B Method -->
 								</ul>
 								
@@ -325,6 +325,15 @@
 							</div>
 						</section>
 						<section data-transition="fade">
+								<aside class="notes">
+										<ul> 
+											<li>The user fills the inputs: project name, criterion, compiler, path of expression solver.</li>
+											</li>
+											<li>In the future, we are interested to connect with other logic solvers.</li>
+												
+											#next How it work in background
+										</ul>
+								</aside>
 							
 							<img class="imgsemborda" src="./img/BTestBox_f.gif" style='height: 70vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'><br>
 							 
@@ -369,13 +378,21 @@
 										operation, including its termination.</li> 
 									<li>BTestbox generates the following all paths.</li>
 								</ul>
+								In accordance with the test criterion:
+								<ul>
+										<li>Statement Coverage criterion require only one test case; </li>
+										<li>Branch Coverage criterion require only two test cases; </li>
+										<li>Path Coverage criterion require only three test cases. </li>
+										<li>Some test cases can be not relevant, when the model is verified. </li>	
+								</ul>
 								#Next How is generated the test cases?
-								Extras:
-								For example, using the PC criterion on the model shown in Fig. 1b, it is necessary to test the three
-								paths defined for the example. Other criteria may have different requirements.
-								For instance, if the ST criterion is required, only path 1 needs to be checked.
-								For the BC criterion, a minimum of two paths would be executed. In accordance
-								with the test criterion,
+								Extras ():
+								Since the operation has a loop, the graph is cyclic, and contains potentially infinite paths (even though only finite paths are allowed, due to the fact that each loop must terminate in B and has been proved as such). 
+								Instead of repeating the instructions inside the loop and generating different paths for each execution of the loop, \textit{BTestBox} computes the paths inside the loop once and uses them to represent all the paths created with the loop's repetition. 
+								We assume this because of the B method termination property - a loop always has to end.
+							
+								
+						
 						</aside>
 					<h2>Example - Control flow graph</h2>
 					<h4>RussMult</h4>
@@ -421,14 +438,7 @@
 									<li>  1, 2, 3, 4, 5,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.</li>
 								</ul>
 						</div>
-					</div>
-					<aside class="notes">
-						Since the operation has a loop, the graph is cyclic, and contains potentially infinite paths (even though only finite paths are allowed, due to the fact that each loop must terminate in B and has been proved as such). 
-					%However, testing uncountable paths is not mechanically possible.
-					Instead of repeating the instructions inside the loop and generating different paths for each execution of the loop, \textit{BTestBox} computes the paths inside the loop once and uses them to represent all the paths created with the loop's repetition. 
-					We assume this because of the B method termination property - a loop always has to end.
-					For our example,
-					</aside>   
+					</div>   
 				</section>
 				<section data-transition="fade">
 					<h3>Generating Predicates</h3>
@@ -464,21 +474,19 @@
 				<section data-transition="fade">
 						<aside class="notes">
 								<font size="-0.5">
-									???
+									Enter in the while (True) and in the IF (False).
 								</font>
 						</aside>
-					<h3>Test case generation</h3>
+					<h3>Branch coverage criterion - Test case 1 </h3>
 							   
 					<p>
 							\(\exists(xx, yy, total).(xx > 0 \wedge xx\ mod\ 2 = 1 \wedge xx \in \mathbb{N} \wedge total + xx * yy = aa * bb) \) <br>
-							\(\wedge \)
-							\(\exists(xx, yy, total).(xx \leq 0 \wedge xx \in \mathbb{N} \wedge total + xx * yy = aa * bb) \)<br>
 							\(\wedge  xx : \mathbb{N} \wedge yy : \mathbb{N} \wedge total : \mathbb{N} \wedge aa : \mathbb{N} \wedge bb : \mathbb{N}   \) 
 							<br><br>
 							In the next step, it is necessary to find if the predicate is verified by at least one solution. 
-							Our tool uses the <i>ProB</i> constraint solver to find a suitable variable interpretation (if it exists).
-							In our example, <i>ProB</i> returned that a possible solution is \(aa = 1, bb = 0, xx = 0, yy = 0, total = 0\). 
-							These values may define the input of a test case.
+							Our tool uses the solver to find a suitable variable interpretation (if it exists).
+							<br>
+							A possible solution is (<u>aa = 1, bb = 0</u>, xx = 0, yy = 0, total = 0). 
 							<br>
 							
 	
@@ -486,6 +494,44 @@
 				   
 				</section>
 				<section data-transition="fade">
+						<aside class="notes">
+								<font size="-0.5">
+									Not in the while (False).
+								</font>
+						</aside>
+					<h3>Branch coverage criterion - Test case 2 </h3>
+							   
+					<p>
+							\(\exists(xx, yy, total).(xx \leq 0 \wedge xx \in \mathbb{N} \wedge total + xx * yy = aa * bb) \)<br>
+							\(\wedge  xx : \mathbb{N} \wedge yy : \mathbb{N} \wedge total : \mathbb{N} \wedge aa : \mathbb{N} \wedge bb : \mathbb{N}   \) 
+							<br><br>
+							<br>
+							<br>
+							A possible solution is (<u>aa = 0, bb = 0</u>, xx = 0, yy = 0, total = 0). 
+							<br>
+						
+					</p>
+				</section>
+			   <section data-transition="fade">
+				<aside class="notes">
+						<font size="-0.5">
+							Not in the while (False).
+						</font>
+				</aside>
+					<h3>Branch coverage criterion - Test case 2 </h3>
+					<p>
+							\(\exists(xx, yy, total).(xx \leq 0 \wedge xx \in \mathbb{N} \wedge total + xx * yy = aa * bb) \)<br>
+							\(\wedge  xx : \mathbb{N} \wedge yy : \mathbb{N} \wedge total : \mathbb{N} \wedge aa : \mathbb{N} \wedge bb : \mathbb{N}   \) 
+							<br><br>
+							<br>
+							Other possible solution is (<u>aa = 2, bb = 0</u>, xx = 0, yy = 0, total = 0). 
+							<br><br>
+							B Method with a verified implementation ensures that the loop ends.
+							<br><br>
+							This test case is not relevant!
+					</p>
+		   		</section>		
+				<!-- <section data-transition="fade">
 						<h3>Branch coverage criterion</h3>
 								<br>
 								It will lead to the following test cases:
@@ -552,9 +598,9 @@
 		
 		
 						</p>
-					   
+					
 					</section>
-	
+					-->
 				<section data-transition="fade">
 					<h2> Creating test case files</h2>
 					<br>
@@ -566,7 +612,7 @@
 								<img class="imgsemborda" src="./img/2019_TAP_Portugal/articlefigs/SAC/arcBTestBox2_new_noBG.png" style='height: 30vmin; width: auto; background: none; text-shadow: none; box-shadow: none; border: none;'><br>
 							 
 							<li>Compatibility to <u>any B Translators</u>.</li>
-							<li>Possible to use <u>others solvers</u>.</li>
+							<li>Possible to use <u>other solvers</u>.</li>
 							</ul>
 				</section>
 				<section data-transition="fade">
@@ -693,6 +739,17 @@
 							-->
 					</section>	
 				<section data-transition="fade">
+					<aside class="notes">
+							<font size="-0.5">
+									Future work:
+								<ul>
+								<!--%\item The clause group exercises the structures sees, extends, constants, constraints, imports, promotes, sets, variables, and local operations. Those elements are put in test in groups and separately to observe the changes in the predicate that each can perform.-->
+								<li> to support the MC/DC and to connect to other logic solvers <u>Clauses</u> group, with 14 examples, the tests observe the changes that each element can perform in the predicate.</li>
+								<li> to reduce the granularity to better enjoy </li>
+								</ul>
+							</font>
+					</aside>					
+
 					<h2> Conclusions and final considerations</h2>
 					<br><br>
 					<p>
